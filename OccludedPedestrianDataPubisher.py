@@ -3,6 +3,7 @@ import glob
 import os
 import csv
 import json
+import time
 
 # Retrieve and set API key
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = glob.glob("*.json")[0]
@@ -33,3 +34,4 @@ with open(csv_path, 'r') as csv_file:
 
         ftr = pub_client.publish(topic_path, json.dumps(payload).encode('utf-8'))
         ftr.result()
+        time.sleep(0.001)
